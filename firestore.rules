@@ -1,0 +1,12 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /reports/{reportId} {
+      // Anyone can submit reports or view them on the map
+      allow read, create: if true;
+      
+      // Only authenticated coordinators can vet (update status) or delete reports
+      allow update, delete: if request.auth != null;
+    }
+  }
+}

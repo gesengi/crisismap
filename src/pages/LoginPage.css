@@ -1,0 +1,111 @@
+/* ─── LoginPage CSS ────────────────────────────────────────────────────────── */
+
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 72px);
+  padding: 40px 24px;
+  background: radial-gradient(circle at center, hsla(var(--accent-primary-hsl), 0.08) 0%, transparent 60%);
+}
+
+.login-page__card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: var(--radius-2xl, 16px);
+  border: 1px solid var(--color-border-subtle);
+  box-shadow: var(--shadow-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: scaleIn 0.3s var(--ease-out);
+}
+
+.login-page__header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-page__logo-icon {
+  font-size: 2.5rem;
+  animation: float 4s ease-in-out infinite;
+}
+
+.login-page__title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.login-page__subtitle {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.login-page__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-page__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.login-page__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.login-page__input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.login-page__input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px hsla(var(--accent-primary-hsl), 0.15);
+}
+
+.login-page__submit-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Demo Credentials Hint Box */
+.login-page__demo-box {
+  padding: 14px 18px;
+  border-radius: var(--radius-lg);
+  background: hsla(215, 80%, 55%, 0.1);
+  border: 1px dashed hsla(215, 80%, 55%, 0.3);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--blue-300);
+}
+
+.login-page__demo-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

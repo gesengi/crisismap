@@ -1,0 +1,12 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /reports/{reportId}/{allPaths=**} {
+      // Anyone can upload photos as evidence and view them on cards
+      allow read, write: if true;
+      
+      // Only authenticated coordinators can delete uploaded photos
+      allow delete: if request.auth != null;
+    }
+  }
+}

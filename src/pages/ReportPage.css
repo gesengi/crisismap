@@ -1,0 +1,280 @@
+/* ─── ReportPage CSS ────────────────────────────────────────────────────────── */
+
+.report-page {
+  padding: 40px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.report-page__header {
+  text-align: center;
+}
+
+.report-page__title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.report-page__subtitle {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* ── Progress Indicator ── */
+.step-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-progress__bar-bg {
+  height: 6px;
+  background: var(--color-border-subtle, #2e303a);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.step-progress__bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: var(--gradient-primary, linear-gradient(135deg, #aa3bff, #c084fc));
+  border-radius: 999px;
+  transition: width 0.4s var(--ease-out);
+}
+
+.step-progress__steps {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.step-progress__step {
+  transition: color 0.3s ease;
+}
+
+.step-progress__step--active {
+  color: var(--color-text-primary);
+}
+
+.step-progress__step--completed {
+  color: var(--color-success, #22c55e);
+}
+
+/* ── Form Card ── */
+.report-page__card {
+  padding: 32px;
+  border-radius: var(--radius-2xl, 16px);
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  animation: fadeIn 0.4s var(--ease-out);
+}
+
+.report-page__content {
+  flex: 1;
+}
+
+/* ── Review & Submit Step ── */
+.review-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.review-summary__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 640px) {
+  .review-summary__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.review-summary__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.review-summary__section-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 6px;
+}
+
+.review-summary__item {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.review-summary__label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.review-summary__value {
+  color: var(--text-primary);
+}
+
+.review-summary__photos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.review-summary__photo {
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.review-summary__map-container {
+  height: 200px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.review-summary__map {
+  height: 100%;
+  width: 100%;
+}
+
+/* ── Navigation Buttons ── */
+.report-page__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: 24px;
+}
+
+/* Badge Dialog Modal Styles */
+.badge-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 6, 13, 0.8);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 24px;
+}
+
+.badge-modal {
+  max-width: 420px;
+  width: 100%;
+  padding: 32px;
+  border-radius: var(--radius-2xl, 16px);
+  border: 1px solid var(--color-border-strong);
+  background: color-mix(in srgb, var(--color-bg-secondary) 95%, transparent);
+  box-shadow: var(--shadow-2xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: modalScaleUp 0.3s var(--ease-out);
+}
+
+.badge-modal__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.badge-modal__icon {
+  font-size: 3rem;
+  line-height: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.badge-modal__title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.badge-modal__subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.badge-modal__card {
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--radius-xl, 12px);
+  background: linear-gradient(135deg, hsl(210, 65%, 48%, 0.12), hsl(152, 54%, 40%, 0.12));
+  border: 1px solid var(--color-border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.badge-modal__badge-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.badge-modal__badge-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-success-500, #10b981);
+  margin: 0;
+}
+
+.badge-modal__badge-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+@keyframes modalScaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.report-page__actions--single {
+  justify-content: flex-end;
+}
