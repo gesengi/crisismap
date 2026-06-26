@@ -344,11 +344,11 @@ const parseDate = (ts) => {
   return isNaN(d.getTime()) ? new Date() : d
 }
 
-function MapRecenter({ position }) {
+function MapFlyTo({ position }) {
   const map = useMap()
   useEffect(() => {
     if (position) {
-      map.flyTo(position, map.getZoom() > 4 ? map.getZoom() : 12, { duration: 0.8 })
+      map.flyTo(position, 15, { duration: 0.8 })
     }
   }, [position, map])
   return null
@@ -368,10 +368,12 @@ function MapDashboard({ showToast, lang = 'en' }) {
   const [reports, setReports] = useState([])
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [now] = useState(() => Date.now())
-  const [viewportCenter, setViewportCenter] = useState([10, 20])
+  const [viewportCenter, setViewportCenter] = useState(null)
+  const [flyToPosition, setFlyToPosition] = useState(null)
 
   const footprints = useMemo(() => {
-    const base = getFootprintsAround(viewportCenter[0], viewportCenter[1])
+    const center = viewportCenter || [0, 20]
+    const base = getFootprintsAround(center[0], center[1])
     const mergedFeatures = [...base.features]
     
     reports.forEach((rep) => {
@@ -651,10 +653,10 @@ function MapDashboard({ showToast, lang = 'en' }) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-            <MapRecenter position={viewportCenter} />
+            <MapFlyTo position={flyToPosition} />
             <MapViewportHandler onViewportChange={setViewportCenter} />
             <GeoJSON 
-              key={`footprints-${footprints.features.length}-${viewportCenter[0]}-${viewportCenter[1]}`}
+              key={`footprints-${footprints.features.length}-${viewportCenter ? viewportCenter[0] : 0}-${viewportCenter ? viewportCenter[1] : 20}`}
               data={footprints}
               style={getFeatureStyle}
             />
